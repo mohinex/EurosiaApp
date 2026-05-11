@@ -1,0 +1,38 @@
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Plus Jakarta Sans", ui-sans-serif, system-ui, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, monospace;
+  
+  --color-eurosia-red: #CC1A2F;
+  --color-eurosia-blue: #11135E;
+  --color-eurosia-black: #000000;
+  
+  --shadow-eurosia: 0 20px 50px rgba(0, 0, 0, 0.1);
+  --shadow-eurosia-red: 0 20px 50px rgba(204, 26, 47, 0.2);
+}
+
+@layer base {
+  body {
+    @apply font-sans antialiased text-eurosia-black bg-white;
+  }
+}
+
+.bg-eurosia-gradient {
+  background: linear-gradient(135deg, #11135E 0%, #000000 100%);
+}
+
+.text-eurosia-red {
+  color: #CC1A2F;
+}
+
+.bg-eurosia-red {
+  background-color: #CC1A2F;
+}
+
+.text-eurosia-gradient {
+  background: linear-gradient(135deg, #CC1A2F 0%, #11135E 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}

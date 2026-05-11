@@ -1,0 +1,15 @@
+{
+  "name": "EUROSIA App Ecosystem",
+  "description": "The Ecosystem-Powered Business Operating System for the Modern World. A complete, production-ready, scalable, and secure business operating system.",
+  "requestFramePermissions": [
+    "camera",
+    "microphone",
+    "geolocation"
+  ],
+  "majorCapabilities": [
+    "cms",
+    "dashboard",
+    "multi-tenant",
+    "authentication"
+  ]
+}
