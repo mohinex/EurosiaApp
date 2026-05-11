@@ -24,7 +24,7 @@ export default function Apps() {
   });
 
   const fallbackApps = [
-    { id: "1", name: "EUROSIA POS", description: "Smart Restaurant & Retail Management", category: "Retail", icon: Store, color: "#F43F5E" },
+    { id: "1", name: "EUROSIA POS", description: "Smart Restaurant & Retail Management", category: "Retail", icon: Store, color: "#F43F5E", url: "http://pos.eurosia.io/" },
     { id: "2", name: "EUROSIA Care", description: "Digital Clinic & Healthcare Platform", category: "Healthcare", icon: HeartPulse, color: "#10B981" },
     { id: "3", name: "EUROSIA CloudPBX", description: "Cloud PBX & Call Center Solution", category: "Communication", icon: Headphones, color: "#3B82F6" },
     { id: "4", name: "EUROSIA AI Calling", description: "AI-Powered Voice Automation Platform", category: "AI", icon: Radio, color: "#F59E0B" },
@@ -110,13 +110,13 @@ export default function Apps() {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
           {filteredApps.length > 0 ? filteredApps.map((app: any, i: number) => {
             const Icon = app.icon || AppWindow;
-            return (
+            const CardContent = (
               <motion.div 
                 key={app.id}
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: i * 0.05 }}
-                className="group bg-white p-10 rounded-[48px] border border-gray-100 hover:shadow-[0_40px_100px_rgba(0,0,0,0.08)] transition-all flex flex-col h-full relative overflow-hidden"
+                className="group bg-white p-10 rounded-[48px] border border-gray-100 hover:shadow-[0_40px_100px_rgba(0,0,0,0.08)] transition-all flex flex-col h-full relative overflow-hidden cursor-pointer"
               >
                 {/* Visual Accent */}
                 <div 
@@ -141,11 +141,25 @@ export default function Apps() {
                     <span className="text-[10px] font-black text-gray-300 uppercase tracking-widest mb-1">Target</span>
                     <span className="text-[10px] font-black text-gray-700 uppercase tracking-widest">{app.category}</span>
                   </div>
-                  <Link to="#" className="w-12 h-12 bg-gray-50 rounded-2xl flex items-center justify-center text-gray-400 group-hover:bg-eurosia-red group-hover:text-white transition-all shadow-sm">
+                  <div className="w-12 h-12 bg-gray-50 rounded-2xl flex items-center justify-center text-gray-400 group-hover:bg-eurosia-red group-hover:text-white transition-all shadow-sm">
                     <ArrowRight size={20} />
-                  </Link>
+                  </div>
                 </div>
               </motion.div>
+            );
+
+            if (app.url) {
+              return (
+                <a key={app.id} href={app.url} target="_blank" rel="noreferrer" className="block h-full">
+                  {CardContent}
+                </a>
+              );
+            }
+
+            return (
+              <Link key={app.id} to={app.path || "#"} className="block h-full">
+                {CardContent}
+              </Link>
             );
           }) : (
             <div className="col-span-full py-40 text-center">

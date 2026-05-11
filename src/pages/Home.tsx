@@ -139,7 +139,7 @@ export default function Home() {
                <Link to="/apps" className="text-eurosia-blue font-black uppercase tracking-widest text-xs hover:underline flex items-center gap-2">View All Apps <ChevronRight size={14} /></Link>
             </div>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-               <ProductCard title="EUROSIA POS" desc="Smart Restaurant & Retail Management" icon={Store} color="#F43F5E" />
+               <ProductCard title="EUROSIA POS" desc="Smart Restaurant & Retail Management" icon={Store} color="#F43F5E" url="http://pos.eurosia.io/" />
                <ProductCard title="EUROSIA Care" desc="Digital Clinic & Healthcare Platform" icon={HeartPulse} color="#10B981" />
                <ProductCard title="EUROSIA CloudPBX" desc="Cloud PBX & Call Center Solution" icon={Headphones} color="#3B82F6" />
                <ProductCard title="EUROSIA AI Calling" desc="AI-Powered Voice Automation Platform" icon={Radio} color="#F59E0B" />
@@ -357,9 +357,9 @@ function TechLayer({ color, label, desc, icon: Icon }: any) {
   );
 }
 
-function ProductCard({ title, desc, icon: Icon, color }: any) {
-  return (
-    <div className="p-8 bg-white rounded-[40px] border border-gray-100 shadow-sm hover:shadow-2xl transition-all group flex gap-5">
+function ProductCard({ title, desc, icon: Icon, color, url }: any) {
+  const CardContent = (
+    <div className="p-8 bg-white rounded-[40px] border border-gray-100 shadow-sm hover:shadow-2xl transition-all group flex gap-5 h-full cursor-pointer">
        <div className="w-14 h-14 rounded-2xl flex items-center justify-center text-white shrink-0 group-hover:rotate-12 transition-transform shadow-lg shadow-black/10" style={{ backgroundColor: color }}>
          <Icon size={24} />
        </div>
@@ -368,6 +368,20 @@ function ProductCard({ title, desc, icon: Icon, color }: any) {
           <p className="text-[10px] text-gray-400 font-bold mt-1 leading-relaxed">{desc}</p>
        </div>
     </div>
+  );
+
+  if (url) {
+    return (
+      <a href={url} target="_blank" rel="noreferrer" className="block h-full">
+        {CardContent}
+      </a>
+    );
+  }
+
+  return (
+    <Link to="/signup" className="block h-full">
+      {CardContent}
+    </Link>
   );
 }
 
